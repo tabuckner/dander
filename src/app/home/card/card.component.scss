@@ -1,6 +1,9 @@
 .card {
   max-width: 450px;
   transition: all 0.3s ease-in-out;
+  margin: 24px 16px;
+  border-radius: 16px;
+  background: darken(white, 86%);
 
   &--moving {
     transition: none;
@@ -8,23 +11,6 @@
     cursor: -moz-grabbing;
     cursor: grabbing;
   }
-
-  ion-card {
-    border-radius: 16px;
-  }
-
-  // .mat-card {
-  //   border-radius: 16px;
-  // }
-
-  // .mat-card-header-text {
-  //   width: 100%;
-  // }
-
-  // .mat-card-actions {
-  //   display: flex;
-  //   justify-content: space-around;
-  // }
 
   &__image {
     height: 150px;
