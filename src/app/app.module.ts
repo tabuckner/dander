@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export const APP_MAT_IMPORTS = [
   MatIconModule
@@ -26,7 +28,8 @@ export const APP_MAT_IMPORTS = [
     IonicModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    ...APP_MAT_IMPORTS
+    ...APP_MAT_IMPORTS,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
