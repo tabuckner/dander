@@ -3,6 +3,11 @@
     <ion-title>
       Home
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onRefresh()">
+        <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +18,5 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Home page"></app-explore-container>
+  <app-card-stack></app-card-stack>
 </ion-content>
