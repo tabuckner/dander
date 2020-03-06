@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 export const APP_MAT_IMPORTS = [
   MatIconModule
@@ -34,6 +35,7 @@ export const APP_MAT_IMPORTS = [
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,3 +1,9 @@
+<!-- <div class="card-stack">
+  <div class="card-stack__card" *ngFor="let card of cards; let i = index"
+    [ngStyle]="{ zIndex: cards.length - i, transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)' }">
+    <app-card [card]="card" (selectionMade)="onCardChoiceMade($event, card)"></app-card>
+  </div>
+</div> -->
 <div class="card-stack">
   <div class="card-stack__card" *ngFor="let card of cards; let i = index"
     [ngStyle]="{ zIndex: cards.length - i, transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)' }">

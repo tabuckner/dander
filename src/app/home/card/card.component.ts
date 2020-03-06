@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, Renderer2, ElementRef, 
 import { CardModel } from 'src/app/core/interfaces/card-model';
 import { CardChoices } from 'src/app/core/enums/card-choices.enum';
 import { DogImageService } from 'src/app/core/services/dog-image.service';
+import { PetFinderService } from 'src/app/core/api/pet-finder.service';
 
 @Component({
   selector: 'app-card',
@@ -18,10 +19,10 @@ export class CardComponent implements OnInit, AfterViewInit {
 
   constructor(private renderer: Renderer2,
               private elRef: ElementRef,
-              private image: DogImageService) { }
+              private image: PetFinderService) { }
 
   ngOnInit() {
-    this.image.getImageUrl(this.card.imageUrl).subscribe(image => this.imageUrl = image);
+    // this.image.getImage(this.card.imageUrl).subscribe(image => this.imageUrl = image);
   }
 
   public ngAfterViewInit() {
