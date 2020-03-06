@@ -1,0 +1,7 @@
+{
+  "name": "dander",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
