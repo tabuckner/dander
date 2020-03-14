@@ -20,7 +20,7 @@ export class PetFinderService {
       params: new HttpParams()
         .set('location', `${coordinates.latitude},${coordinates.longitude}`)
         .set('distance', '25')
-      // .set('type', 'Dog')
+        .set('type', 'Dog')
     };
 
     return this.http.get<{ animals: PetFinderAnimalModel[], pagination: any }>(url, httpOptions);
