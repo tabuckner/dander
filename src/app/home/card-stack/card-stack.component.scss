@@ -2,7 +2,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -10,11 +10,8 @@
   overflow: hidden;
 
   &__card {
-    // width: 260px;
-    // height: 70%;
-    // padding-bottom: 40px;
-    /* border-radius: 8px; */
-    /* overflow: hidden; */
+    height: 100%;
+    padding: 16px 24px;
     position: absolute;
     will-change: transform;
     transition: all 0.3s ease-in-out;

@@ -4,6 +4,8 @@ import { CardChoices } from 'src/app/core/enums/card-choices.enum';
 import { DogImageService } from 'src/app/core/services/dog-image.service';
 import { PetFinderService } from 'src/app/core/api/pet-finder.service';
 import { ExternalLinkService } from 'src/app/core/services/external-link.service';
+import { ModalController } from '@ionic/angular';
+import { CardDetailsComponent } from '../card-details/card-details.component';
 
 @Component({
   selector: 'app-card',
@@ -22,7 +24,8 @@ export class CardComponent implements OnInit, AfterViewInit {
   constructor(private renderer: Renderer2,
               private elRef: ElementRef,
               private image: PetFinderService,
-              private externalLink: ExternalLinkService) { }
+              private externalLink: ExternalLinkService,
+              private modalController: ModalController) { }
 
   public ngOnInit() {
     // this.image.getImage(this.card.imageUrl).subscribe(image => this.imageUrl = image);
@@ -98,6 +101,17 @@ export class CardComponent implements OnInit, AfterViewInit {
 
   public onInfo() {
     this.externalLink.openLink(this.card.externalUrl);
+  }
+
+  public async onDescription() {
+    const modal = await this.modalController.create({
+      component: CardDetailsComponent,
+      swipeToClose: true,
+      componentProps: {
+        card: { ...this.card }
+      }
+    });
+    return await modal.present();
   }
 
   public onLike() {

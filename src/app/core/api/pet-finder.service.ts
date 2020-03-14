@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { PetFinderAnimalModel } from 'src/app/core/interfaces/pet-finder-animal-model';
 import { PetFinderAnimalsResponseModel } from '../interfaces/pet-finder-animals-response-model';
 import { PAGINATION_SETTINGS } from '../constants/settings/pagination.settings';
+import { PetFinderOrganizationResponseModel, PetFinderOrganizationModel } from '../interfaces/pet-finder-organization-response-model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,13 @@ export class PetFinderService {
   public getResultsPage(page: string): Observable<PetFinderAnimalsResponseModel> {
     const url = `${this.BASE_URL}${page}`;
     return this.http.get<PetFinderAnimalsResponseModel>(url);
+  }
+
+  public getOrganization(orgId: string): Observable<PetFinderOrganizationModel> { // TODO: Type
+    const url = `${this.BASE_URL}/${this.apiVersion}/organizations/${orgId}`;
+    return this.http.get<PetFinderOrganizationResponseModel>(url).pipe(
+      map(response => response.organization)
+    );
   }
 
 

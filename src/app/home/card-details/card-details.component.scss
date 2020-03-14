@@ -1,0 +1,61 @@
+.card-details {
+  height: 100%;
+  padding: 8px 16px;
+  border-radius: 24px;
+
+  .ion-page {
+    border-radius: 24px;
+  }
+  
+  &__close {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__heading {
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  &__subtitle {
+    opacity: 0.66;
+  }
+
+  &__name {
+    margin-right: 4px;
+  }
+
+  &__age {
+    margin-right: 4px;
+  }
+
+  &__gender {
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+    opacity: 0.33;
+  }
+
+  &__breed {
+    font-size: 14px;
+  }
+
+  &__available-since {
+    font-size: 12px;
+  }
+
+  &__attributes {
+    margin-bottom: 8px;
+  }
+}

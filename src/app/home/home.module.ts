@@ -12,6 +12,7 @@ import { HomePage } from './home.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { CardStackComponent } from './card-stack/card-stack.component';
 import { CardComponent } from './card/card.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 export const HOME_MAT_IMPORTS = [
   MatCardModule,
@@ -32,7 +33,11 @@ export const HOME_MAT_IMPORTS = [
   declarations: [
     HomePage,
     CardStackComponent,
-    CardComponent
+    CardComponent,
+    CardDetailsComponent
+  ],
+  entryComponents: [
+    CardDetailsComponent,
   ]
 })
 export class HomePageModule {}

@@ -1,0 +1,70 @@
+<div class="card-details">
+  <div class="card-details__close">
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="card-details__content">
+    <div class="card-details__heading">
+      <div class="card-details__title">
+        <div class="card-details__name">{{ card.name }},</div>
+        <div class="card-details__age">{{ card.age }}</div>
+        <div class="card-details__gender" *ngIf="card.gender === 'Male'">
+          <svg height="100%" viewBox="0 0 384 384" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m383.792969 13.9375c-.175781-1.378906-.480469-2.707031-.984375-3.953125-.015625-.03125-.015625-.074219-.023438-.113281 0-.007813-.007812-.015625-.015625-.023438-.554687-1.3125-1.3125-2.503906-2.167969-3.609375-.210937-.261719-.417968-.519531-.640624-.765625-.914063-1.03125-1.90625-1.984375-3.058594-2.761718-.03125-.023438-.070313-.03125-.101563-.054688-1.113281-.734375-2.34375-1.289062-3.632812-1.726562-.320313-.113282-.632813-.210938-.960938-.296876-1.351562-.367187-2.742187-.632812-4.207031-.632812h-112c-8.832031 0-16 7.167969-16 16s7.167969 16 16 16h73.367188l-95.496094 95.496094c-25.464844-20.367188-56.816406-31.496094-89.871094-31.496094-79.398438 0-144 64.601562-144 144s64.601562 144 144 144 144-64.601562 144-144c0-33.039062-11.121094-64.382812-31.503906-89.871094l95.503906-95.503906v73.375c0 8.832031 7.167969 16 16 16s16-7.167969 16-16v-112c0-.335938-.078125-.65625-.097656-.984375-.023438-.367187-.0625-.71875-.109375-1.078125zm-239.792969 338.0625c-61.761719 0-112-50.238281-112-112s50.238281-112 112-112c29.902344 0 58.054688 11.640625 79.222656 32.734375 21.136719 21.210937 32.777344 49.363281 32.777344 79.265625 0 61.761719-50.238281 112-112 112zm0 0" />
+          </svg>
+        </div>
+        <div class="card-details__gender" *ngIf="card.gender === 'Female'">
+          <svg height="100%" viewBox="-56 0 384 384" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m272 136c0-74.992188-61.007812-136-136-136s-136 61.007812-136 136c0 69.566406 52.535156 127.015625 120 134.976562v33.023438h-32c-8.832031 0-16 7.167969-16 16s7.167969 16 16 16h32v32c0 8.832031 7.167969 16 16 16s16-7.167969 16-16v-32h32c8.832031 0 16-7.167969 16-16s-7.167969-16-16-16h-32v-33.023438c67.464844-7.960937 120-65.410156 120-134.976562zm-240 0c0-57.34375 46.65625-104 104-104s104 46.65625 104 104-46.65625 104-104 104-104-46.65625-104-104zm0 0" />
+          </svg>
+        </div>
+      </div>
+      <div class="card-details__subtitle">
+        <div class="card-details__breed">{{ card.breed }}</div>
+        <div class="card-details__available-since">Available Since {{ card.published | date:'short' }}</div>
+      </div>
+    </div>
+    <div class="card__description">
+      <p>
+        {{ card.description || 'We don\'t have a ton of info on this dog. Tap the info icon to go to the adoption page.' }}
+      </p>
+    </div>
+    <div class="card-details__attributes">
+      <div class="card-details__attributes__fixed">Fixed: {{ card.attributes.spayed_neutered }}</div>
+      <div class="card-details__attributes__potty-trained">Potty Trained {{ card.attributes.house_trained }}</div>
+      <div class="card-details__attributes__special-needs">Special Needs: {{ card.attributes.special_needs }}</div>
+      <div class="card-details__attributes__shots">Shots Current: {{ card.attributes.shots_current }}</div>
+    </div>
+
+    <div class="card-details__org-info" *ngIf="orgInfo">
+      <div class="card-details__org-info__item">
+        Organization: {{ orgInfo.name }}
+      </div>
+      <div class="card-details__org-info__item">
+        Email: {{ orgInfo.email }}
+      </div>
+      <div class="card-details__org-info__item">
+        Phone: {{ orgInfo.phone }}
+      </div>
+    </div>
+
+    <div class="card-details__org-info card-details__org-info--skeleton" *ngIf="!orgInfo">
+      <div class="card-details__org-info__item" style="display: flex">
+        Organization: <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+      </div>
+      <div class="card-details__org-info__item" style="display: flex">
+        Email: <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+      </div>
+      <div class="card-details__org-info__item" style="display: flex">
+        Phone: <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+      </div>
+    </div>
+
+    <div class="card-details__last-updated">
+      Last Updated {{ card.lastUpdated | date:'short' }}
+    </div>
+  </div>
+</div>

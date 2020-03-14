@@ -25,7 +25,7 @@ export class CardStackComponent implements OnInit {
     });
   }
 
-   public onCardChoiceMade(choice: CardChoices, card: CardModel) {
+  public onCardChoiceMade(choice: CardChoices, card: CardModel) {
     const selection: SelectionEventModel = { card, choice };
     this.choiceMade.emit(selection);
     setTimeout(() => {
@@ -60,6 +60,10 @@ export class CardStackComponent implements OnInit {
         imageUrl: image,
         description: animal.description,
         externalUrl: animal.url,
+        published: animal.published_at,
+        lastUpdated: animal.status_changed_at,
+        attributes: { ...animal.attributes },
+        organizationId: animal.organization_id,
       };
       return card;
     });
