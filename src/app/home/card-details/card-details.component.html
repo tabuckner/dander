@@ -1,11 +1,11 @@
-<div class="card-details">
+<div class="card-details" [ngClass]="{'is-mobile': isMobile}">
   <div class="card-details__close">
     <button mat-icon-button (click)="onClose()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
   <div class="card-details__content">
-    <div class="card-details__heading">
+    <div class="card-details__content__section card-details__heading">
       <div class="card-details__title">
         <div class="card-details__name">{{ card.name }},</div>
         <div class="card-details__age">{{ card.age }}</div>
@@ -27,12 +27,14 @@
         <div class="card-details__available-since">Available Since {{ card.published | date:'short' }}</div>
       </div>
     </div>
-    <div class="card__description">
-      <p>
+
+    <div class="card-details__content__section card__description">
+      <p class="card__description__text" style="margin: 0">
         {{ card.description || 'We don\'t have a ton of info on this dog. Tap the info icon to go to the adoption page.' }}
       </p>
     </div>
-    <div class="card-details__attributes">
+
+    <div class="card-details__content__section card-details__attributes">
       <div class="card-details__attributes__title">
         At a glance
       </div>
@@ -68,7 +70,7 @@
       </div>
     </div>
 
-    <div class="card-details__org-info" *ngIf="orgInfo">
+    <div class="card-details__content__section card-details__org-info" *ngIf="orgInfo">
       <div class="card-details__org-info__title">Submitted by</div>
       <div class="card-details__org-info__item" *ngIf="orgInfo.name" (click)="onOrganization()">
         <mat-icon>business</mat-icon>{{ orgInfo.name }}
@@ -87,24 +89,28 @@
         <mat-icon>call</mat-icon>{{ orgInfo.phone }}
         <a #tel [href]="'tel:' + orgInfo.phone" style="display: hidden"></a>
       </div>
-      <div class="card-details__org-info__item" *ngIf="isMobile && (addressInfo?.street || addressInfo?.cityStateZip)" (click)="onLocation()">
+      <div class="card-details__org-info__item" *ngIf="isMobile && (addressInfo?.street || addressInfo?.cityStateZip)"
+        (click)="onLocation()">
         <mat-icon>location_on</mat-icon>
         <span>
           <div *ngIf="addressInfo.street">{{ addressInfo.street }}</div>
           <div *ngIf="addressInfo.cityStateZip">{{ addressInfo.cityStateZip }}</div>
         </span>
       </div>
-      <div class="card-details__org-info__item" *ngIf="!isMobile && (addressInfo?.street || addressInfo?.cityStateZip)" (click)="mapsLocation.click()">
+      <div class="card-details__org-info__item" *ngIf="!isMobile && (addressInfo?.street || addressInfo?.cityStateZip)"
+        (click)="mapsLocation.click()">
         <mat-icon>location_on</mat-icon>
         <span>
           <div *ngIf="addressInfo.street">{{ addressInfo.street }}</div>
           <div *ngIf="addressInfo.cityStateZip">{{ addressInfo.cityStateZip }}</div>
         </span>
-        <a #mapsLocation [href]="'https://maps.google.com/?q=' + addressSearchQuery" target="_blank" style="display: hidden"></a>
+        <a #mapsLocation [href]="'https://maps.google.com/?q=' + addressSearchQuery" target="_blank"
+          style="display: hidden"></a>
       </div>
     </div>
 
-    <div class="card-details__org-info card-details__org-info--skeleton" *ngIf="!orgInfo">
+    <div class="card-details__content__section card-details__org-info card-details__org-info--skeleton"
+      *ngIf="!orgInfo">
       <div class="card-details__org-info__title">Submitted by</div>
       <div class="card-details__org-info__item" style="display: flex">
         <mat-icon>business</mat-icon>
@@ -123,10 +129,12 @@
         <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
       </div>
     </div>
+
     <div class="card-details__spacer"></div>
-      <div class="card-details__view-adoption">
-        <ion-button fill="clear" color="primary" (click)="onViewAdoption()">View Adoption</ion-button>
-      </div>
+
+    <div class="card-details__view-adoption">
+      <ion-button fill="clear" color="primary" (click)="onViewAdoption()">View Adoption</ion-button>
+    </div>
     <div class="card-details__last-updated">
       Last Updated {{ card.lastUpdated | date:'short' }}
     </div>

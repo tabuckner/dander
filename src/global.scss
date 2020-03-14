@@ -26,7 +26,9 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 // OVERRIDES
-.modal-wrapper {
-  border-top-right-radius: 24px !important;
-  border-top-left-radius: 24px !important;
+.modal--is-mobile {
+  .modal-wrapper {
+    border-top-right-radius: 24px !important;
+    border-top-left-radius: 24px !important;
+  }
 }

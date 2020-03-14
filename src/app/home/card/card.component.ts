@@ -4,7 +4,7 @@ import { CardChoices } from 'src/app/core/enums/card-choices.enum';
 import { DogImageService } from 'src/app/core/services/dog-image.service';
 import { PetFinderService } from 'src/app/core/api/pet-finder.service';
 import { ExternalLinkService } from 'src/app/core/services/external-link.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { CardDetailsComponent } from '../card-details/card-details.component';
 
 @Component({
@@ -20,15 +20,17 @@ export class CardComponent implements OnInit, AfterViewInit {
   transitionInProgress: boolean;
   isMoving = false;
   isExpanded = false;
+  isMobile = false;
 
   constructor(private renderer: Renderer2,
               private elRef: ElementRef,
               private image: PetFinderService,
               private externalLink: ExternalLinkService,
-              private modalController: ModalController) { }
+              private modalController: ModalController,
+              private platform: Platform) { }
 
   public ngOnInit() {
-    // this.image.getImage(this.card.imageUrl).subscribe(image => this.imageUrl = image);
+    this.isMobile = !this.platform.is('tablet') || !this.platform.is('desktop');
   }
 
   public ngAfterViewInit() {
@@ -109,7 +111,8 @@ export class CardComponent implements OnInit, AfterViewInit {
       swipeToClose: true,
       componentProps: {
         card: { ...this.card }
-      }
+      },
+      cssClass: this.isMobile ? 'modal--is-mobile' : ''
     });
     return await modal.present();
   }

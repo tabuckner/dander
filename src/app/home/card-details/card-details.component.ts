@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { CardModel } from 'src/app/core/interfaces/card-model';
 import { PetFinderService } from 'src/app/core/api/pet-finder.service';
 import { PetFinderOrganizationModel } from 'src/app/core/interfaces/pet-finder-organization-response-model';
@@ -30,9 +30,11 @@ export class CardDetailsComponent implements OnInit {
               private externalLink: ExternalLinkService,
               private callNumber: CallNumber,
               private emailComposer: EmailComposer,
-              private navigation: LaunchNavigator) { }
+              private navigation: LaunchNavigator,
+              private platform: Platform) { }
 
   ngOnInit() {
+    this.isMobile = !this.platform.is('tablet') || !this.platform.is('desktop');
     this.getOrgInfo();
     this.callNumber.isCallSupported().then(val => this.canCall = val).catch(() => this.canCall = false);
     try {
