@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { PetFinderAnimalModel } from '../interfaces/pet-finder-animal-model';
 import { Coordinates } from '@ionic-native/geolocation/ngx';
 import { PetFinderService } from '../api/pet-finder.service';
@@ -21,9 +21,10 @@ export class DogsService {
   }
 
   public getAnimals(coordinates: Coordinates) {
-    this.petFinder.getPetsByCoordinates(coordinates).subscribe(data => {
-      this.getPetsSuccess(data);
-    });
+    this.getPetsSuccess(PET_FINDER_RESPONSE_MOCK);
+    // this.petFinder.getPetsByCoordinates(coordinates).subscribe(data => {
+    //   this.getPetsSuccess(data);
+    // });
   }
 
   public getNextPage() {
@@ -33,6 +34,7 @@ export class DogsService {
   }
 
   private getPetsSuccess(data: PetFinderAnimalsResponseModel) {
+    console.warn(data)
     this.animalsSubject.next(data.animals);
     this.pagination = data.pagination;
   }

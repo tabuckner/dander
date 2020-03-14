@@ -7,4 +7,5 @@ export interface CardModel {
   size: string;
   imageUrl: string;
   description: string;
+  externalUrl: string;
 }

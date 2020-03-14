@@ -3,6 +3,7 @@ import { CardModel } from 'src/app/core/interfaces/card-model';
 import { CardChoices } from 'src/app/core/enums/card-choices.enum';
 import { DogImageService } from 'src/app/core/services/dog-image.service';
 import { PetFinderService } from 'src/app/core/api/pet-finder.service';
+import { ExternalLinkService } from 'src/app/core/services/external-link.service';
 
 @Component({
   selector: 'app-card',
@@ -16,12 +17,14 @@ export class CardComponent implements OnInit, AfterViewInit {
   moveOutWidth: number;
   transitionInProgress: boolean;
   isMoving = false;
+  isExpanded = false;
 
   constructor(private renderer: Renderer2,
               private elRef: ElementRef,
-              private image: PetFinderService) { }
+              private image: PetFinderService,
+              private externalLink: ExternalLinkService) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     // this.image.getImage(this.card.imageUrl).subscribe(image => this.imageUrl = image);
   }
 
@@ -29,7 +32,7 @@ export class CardComponent implements OnInit, AfterViewInit {
     this.moveOutWidth = document.documentElement.clientWidth * 1.5;
   }
 
-  handlePan(event) {
+  public handlePan(event) {
 
     if (event.deltaX === 0 || (event.center.x === 0 && event.center.y === 0)) {
       return;
@@ -56,7 +59,7 @@ export class CardComponent implements OnInit, AfterViewInit {
     );
   }
 
-  handlePanEnd(event) {
+  public handlePanEnd(event) {
 
     // this.toggleChoiceIndicator(false,false);
 
@@ -91,6 +94,10 @@ export class CardComponent implements OnInit, AfterViewInit {
       heart ? this.onLike() : this.onDislike();
     }
     this.transitionInProgress = true;
+  }
+
+  public onInfo() {
+    this.externalLink.openLink(this.card.externalUrl);
   }
 
   public onLike() {

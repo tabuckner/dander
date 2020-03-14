@@ -58,7 +58,8 @@ export class CardStackComponent implements OnInit {
         gender: animal.gender,
         size: animal.size,
         imageUrl: image,
-        description: animal.description
+        description: animal.description,
+        externalUrl: animal.url,
       };
       return card;
     });

@@ -16,6 +16,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 export const APP_MAT_IMPORTS = [
   MatIconModule
@@ -38,7 +39,8 @@ export const APP_MAT_IMPORTS = [
     SplashScreen,
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    InAppBrowser,
   ],
   bootstrap: [AppComponent]
 })
