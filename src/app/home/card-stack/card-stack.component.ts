@@ -3,7 +3,7 @@ import { SelectionEventModel } from 'src/app/core/interfaces/selection-event-mod
 import { CardModel } from 'src/app/core/interfaces/card-model';
 import { DogsService } from 'src/app/core/services/dogs.service';
 import { CardChoices } from 'src/app/core/enums/card-choices.enum';
-import { PetFinderAnimalModel } from 'src/app/interfaces/pet-finder-animal-model';
+import { PetFinderAnimalModel } from 'src/app/core/interfaces/pet-finder-animal-model';
 
 @Component({
   selector: 'app-card-stack',

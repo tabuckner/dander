@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Coordinates } from '@ionic-native/geolocation/ngx';
 import { Observable } from 'rxjs';
-import { PetFinderAnimalModel } from 'src/app/interfaces/pet-finder-animal-model';
-import { tap, map } from 'rxjs/operators';
+import { PetFinderAnimalModel } from 'src/app/core/interfaces/pet-finder-animal-model';
+import { PetFinderAnimalsResponseModel } from '../interfaces/pet-finder-animals-response-model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class PetFinderService {
 
   constructor(private http: HttpClient) { }
 
-  public getPetsByLat(coordinates: Coordinates): Observable<{ animals: PetFinderAnimalModel[], pagination: any }> {
+  public getPetsByCoordinates(coordinates: Coordinates): Observable<PetFinderAnimalsResponseModel> {
     const url = `${this.BASE_URL}/animals`;
     const httpOptions = {
       params: new HttpParams()
