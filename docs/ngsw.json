@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1584203545348,
+  "timestamp": 1584204222074,
   "index": "/dander/index.html",
   "assetGroups": [
     {
@@ -193,8 +193,8 @@
         "/dander/common-es2015.f1f7fc4829056676f407.js",
         "/dander/common-es5.f1f7fc4829056676f407.js",
         "/dander/index.html",
-        "/dander/main-es2015.1e026285573c4769d521.js",
-        "/dander/main-es5.1e026285573c4769d521.js",
+        "/dander/main-es2015.e8e5f16f0d994cb9b9b4.js",
+        "/dander/main-es5.e8e5f16f0d994cb9b9b4.js",
         "/dander/manifest.webmanifest",
         "/dander/polyfills-es2015.1b17ac1693c5d7207388.js",
         "/dander/polyfills-es5.2da32d87ce4120794c50.js",
@@ -423,9 +423,9 @@
     "/dander/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
     "/dander/common-es2015.f1f7fc4829056676f407.js": "2e32c010ef760ed85424051bb279ef3d4ec40f51",
     "/dander/common-es5.f1f7fc4829056676f407.js": "1c4f6e7a2795ef5c2949616171981491d6e474c3",
-    "/dander/index.html": "23b5823f4b2f2072f7a349fa32f4474aa5e1304c",
-    "/dander/main-es2015.1e026285573c4769d521.js": "ece7de2649bcaa0458102cbd945a184b1def7394",
-    "/dander/main-es5.1e026285573c4769d521.js": "b65a2b6d03399118474a159f5753ed7c1f406b7b",
+    "/dander/index.html": "03770a39adf4c784fd4b2a19a1f12398d4564030",
+    "/dander/main-es2015.e8e5f16f0d994cb9b9b4.js": "9fee2658a782ec0972bbed468debf6422570a1cc",
+    "/dander/main-es5.e8e5f16f0d994cb9b9b4.js": "b7522b0620043361e018f85373b0ed358f78f543",
     "/dander/manifest.webmanifest": "d3d2a84d5c8e487345c5b5f8321622811781f0d8",
     "/dander/polyfills-es2015.1b17ac1693c5d7207388.js": "d09f5d54be882e501e006c5c097486eef3dbb188",
     "/dander/polyfills-es5.2da32d87ce4120794c50.js": "af404837a6ad1932d594467825a065c901c1446d",

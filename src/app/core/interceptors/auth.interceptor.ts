@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401 || error.status === 0) {
+        if (error.status === 401 || error.status === 0 || !token) {
 
           return this.auth.fetchToken().pipe(
             flatMap(() => {
