@@ -18,6 +18,10 @@
     <param name="android-package" value="de.appplant.cordova.emailcomposer.EmailComposer"/>
   </feature>
 
+  <feature name="NativeStorage">
+    <param name="android-package" value="NativeStorage"/>
+  </feature>
+
   <feature name="LaunchNavigator">
     <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigatorPlugin"/>
   </feature>

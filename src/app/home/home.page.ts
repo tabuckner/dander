@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DogsService } from '../core/services/dogs.service';
-import { LocationService } from '../core/services/location.service';
+import { LocationService, AppLatLong } from '../core/services/location.service';
 import { Coordinates } from '@ionic-native/geolocation/ngx';
 import { PetFinderService } from '../core/api/pet-finder.service';
 import { PetFinderAnimalModel } from '../core/interfaces/pet-finder-animal-model';
@@ -14,7 +14,7 @@ import { PetFinderAnimalsResponseModel } from '../core/interfaces/pet-finder-ani
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
-  private coordinates: Coordinates;
+  private coordinates: AppLatLong;
 
   constructor(private location: LocationService,
               private dogsService: DogsService) {}

@@ -20,6 +20,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 export const APP_MAT_IMPORTS = [
   MatIconModule
@@ -35,7 +37,8 @@ export const APP_MAT_IMPORTS = [
     AppRoutingModule,
     BrowserAnimationsModule,
     ...APP_MAT_IMPORTS,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
@@ -46,7 +49,7 @@ export const APP_MAT_IMPORTS = [
     InAppBrowser,
     CallNumber,
     EmailComposer,
-    LaunchNavigator
+    LaunchNavigator,
   ],
   bootstrap: [AppComponent]
 })

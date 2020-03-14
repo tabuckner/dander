@@ -8,6 +8,7 @@ import { PetFinderAnimalsResponseModel } from '../interfaces/pet-finder-animals-
 import { PAGINATION_SETTINGS } from '../constants/settings/pagination.settings';
 import { PetFinderOrganizationResponseModel, PetFinderOrganizationModel } from '../interfaces/pet-finder-organization-response-model';
 import { map } from 'rxjs/operators';
+import { AppLatLong } from '../services/location.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,11 @@ export class PetFinderService {
 
   constructor(private http: HttpClient) { }
 
-  public getPetsByCoordinates(coordinates: Coordinates): Observable<PetFinderAnimalsResponseModel> {
+  public getPetsByCoordinates(coordinates: AppLatLong): Observable<PetFinderAnimalsResponseModel> {
     const url = `${this.BASE_URL}/${this.apiVersion}/animals`;
     const httpOptions = {
       params: new HttpParams()
-        .set('location', `${coordinates.latitude},${coordinates.longitude}`)
+        .set('location', `${coordinates.lat},${coordinates.long}`)
         .set('distance', '25')
         .set('type', 'Dog')
         .set('limit', `${PAGINATION_SETTINGS.pageSize}`)
