@@ -18,13 +18,15 @@ export interface PetFinderAnimalModel {
   photos?: (PhotosEntity)[] | null;
   videos?: (VideosEntity)[] | null;
   status: string;
+  status_changed_at: string;
   published_at: string;
+  distance: number;
   contact: Contact;
   _links: Links;
 }
 export interface Breeds {
   primary: string;
-  secondary?: null;
+  secondary?: string;
   mixed: boolean;
   unknown: boolean;
 }

@@ -14,6 +14,7 @@ import { PAGINATION_SETTINGS } from 'src/app/core/constants/settings/pagination.
 export class CardStackComponent implements OnInit {
   @Output() public choiceMade = new EventEmitter<SelectionEventModel>();
   public cards: CardModel[] = [];
+  public maxZIndex = PAGINATION_SETTINGS.pageSize;;
 
   constructor(private dogsService: DogsService) { }
 
@@ -24,23 +25,7 @@ export class CardStackComponent implements OnInit {
     });
   }
 
-  private mapAnimalsToCards(animals: PetFinderAnimalModel[]) {
-    const cards = animals.map((animal) => {
-      const image = animal && animal.photos && animal.photos[0] && animal.photos[0].medium
-        ? animal.photos[0].medium
-        : 'https://www.bil-jac.com/Images/DogPlaceholder.svg';
-      return {
-        id: animal.id,
-        name: animal.name,
-        breed: animal.breeds.primary,
-        imageUrl: image,
-        description: animal.description
-      } as CardModel;
-    });
-    return cards;
-  }
-
-  public onCardChoiceMade(choice: CardChoices, card: CardModel) {
+   public onCardChoiceMade(choice: CardChoices, card: CardModel) {
     const selection: SelectionEventModel = { card, choice };
     this.choiceMade.emit(selection);
     setTimeout(() => {
@@ -51,6 +36,34 @@ export class CardStackComponent implements OnInit {
     }, 300);
   }
 
+  public getSafeScaleValue(i: number): number {
+    return Math.max(0, (20 - i) / 20);
+  }
+
+  private mapAnimalsToCards(animals: PetFinderAnimalModel[]) {
+    const cards = animals.map((animal) => {
+      const normalizedName = animal.name.charAt(0).toUpperCase() + animal.name.slice(1).toLowerCase();
+      const image = animal && animal.photos && animal.photos[0] && animal.photos[0].medium
+        ? animal.photos[0].medium
+        : 'https://www.bil-jac.com/Images/DogPlaceholder.svg';
+      const breedString = animal.breeds.mixed
+        ? `${animal.breeds.primary} and ${animal.breeds.secondary || 'Something'}`
+        : animal.breeds.primary;
+
+      const card: CardModel = {
+        id: animal.id,
+        name: normalizedName,
+        breed: breedString,
+        age: `${animal.age}`,
+        gender: animal.gender,
+        size: animal.size,
+        imageUrl: image,
+        description: animal.description
+      };
+      return card;
+    });
+    return cards;
+  }
 
   private get cardCountIsTooLow(): boolean {
     return this.cards.length <= PAGINATION_SETTINGS.pageSize / 3;

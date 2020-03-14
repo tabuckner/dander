@@ -1,4 +1,4 @@
-import { CardModel } from '../interfaces/card-model';
+import { CardModel } from '../../interfaces/card-model';
 
 export const MOCK_DOGS: CardModel[] = [
   // { breed: 'Doberman', imageUrl: `https://dog.ceo/api/breed/doberman/images/random` },

@@ -1,3 +1,3 @@
 export const PAGINATION_SETTINGS = {
-  pageSize: 5
+  pageSize: 20
 };

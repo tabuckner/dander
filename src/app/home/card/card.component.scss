@@ -3,6 +3,7 @@
   transition: all 0.3s ease-in-out;
   margin: 24px 16px;
   border-radius: 16px;
+  text-align: left;
 
   &--moving {
     transition: none;
@@ -19,6 +20,36 @@
     background-position: center;
     border-radius: 24px;
     margin-bottom: 25px;
+  }
+
+  &__heading {
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  &__name {
+    margin-right: 4px;
+  }
+
+  &__age {
+    margin-right: 4px;
+  }
+
+  &__gender {
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+    opacity: .33;
+  }
+
+  &__breed {
+    font-size: 14px;
+    opacity: .66;
   }
 
   &__actions {
