@@ -2,14 +2,27 @@
   height: 100%;
   padding: 8px 16px;
   border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 
   .ion-page {
     border-radius: 24px;
   }
-  
+
   &__close {
     display: flex;
     flex-direction: row-reverse;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__spacer {
+    flex: 1;
   }
 
   &__top {
@@ -57,5 +70,46 @@
 
   &__attributes {
     margin-bottom: 8px;
+
+    &__title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    &__item {
+      display: flex;
+    }
+
+    &__icon {
+      margin-right: 8px;
+    }
+  }
+
+  &__org-info {
+    &__title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    &__item {
+      display: flex;
+      align-items: center;
+      line-height: 24px;
+      margin-bottom: 4px;
+
+      .mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &__view-adoption {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__last-updated {
+    font-size: 14px;
+    opacity: 0.33;
+    text-align: center;
   }
 }

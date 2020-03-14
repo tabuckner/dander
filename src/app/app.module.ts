@@ -17,6 +17,9 @@ import { environment } from '../environments/environment';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 
 export const APP_MAT_IMPORTS = [
   MatIconModule
@@ -41,6 +44,9 @@ export const APP_MAT_IMPORTS = [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     InAppBrowser,
+    CallNumber,
+    EmailComposer,
+    LaunchNavigator
   ],
   bootstrap: [AppComponent]
 })

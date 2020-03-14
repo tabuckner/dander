@@ -1037,10 +1037,24 @@
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-1.5.1.tgz#9a0120ae500f37c6dc38b25c6ecfbe131013f70a"
   integrity sha512-6b8o/U87KIRWj3OLT+RrStTS56FWF7/dJkFe75XS5PBZPlWl8dKB3MUb3oKpWX5E7Y105Yo8CA/fKOSk8QQzsg==
 
+"@ionic-native/call-number@^5.22.0":
+  version "5.22.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/call-number/-/call-number-5.22.0.tgz#f5ccb07bd606a3b29b2ab12bd88fcc6098b2968d"
+  integrity sha512-17KhhY1aA5GR/9ClckPUSxqj34/DTF2AhPt7TC5bVp3x8QejOre/JaEyGstepBW8WNXSikuWMuMbg843MambEQ==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic-native/core@^5.0.0":
   version "5.22.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-5.22.0.tgz#4ecd16ee33dd83d80ec48eec2743b3f10202202e"
   integrity sha512-zX4EUDDDkCBtZVmu00V+SVbpuqDGhxe0Fri75neAjsG1oHvP3l470EOGHJgLW5edJtIcStlqvDE49RUcwT4mlA==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/email-composer@^5.22.0":
+  version "5.22.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/email-composer/-/email-composer-5.22.0.tgz#b147459b896bbe03d4304f4f3bf262c89b5cfe09"
+  integrity sha512-sGPHG8z/IkwTORIQJvokFsIstMrQXRIIzBnsT7XsOp6Q+FdytlfRPgLN0syC/W7NUp5xEogpRspzHH8fXrm6Aw==
   dependencies:
     "@types/cordova" latest
 
@@ -1055,6 +1069,13 @@
   version "5.22.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/in-app-browser/-/in-app-browser-5.22.0.tgz#bb6f65caee601de5543584fb425b9cc8543583d5"
   integrity sha512-agSZuD6Lm7T/2rTxhwiM3zo+m0QJMLsaKiSwqBcp93sFMrkZoC7dG5LxGshubYODL74BlZjPfDWiS30doY/xEQ==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/launch-navigator@^5.22.0":
+  version "5.22.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/launch-navigator/-/launch-navigator-5.22.0.tgz#d74428adce783335e46ccabc43a10bd9afc5a0de"
+  integrity sha512-px69g8ot5/7xLdmnFyqmTR531hClr9Ibp8lZ9cITt3pvu7LpC1uaW5y+V+HhMVqdrG3cWkKhllRXD3NGiPZajQ==
   dependencies:
     "@types/cordova" latest
 
@@ -2246,6 +2267,11 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+call-number@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/call-number/-/call-number-1.0.1.tgz#bf9daae487fd6a5573f89aa3655fbe8af036afd2"
+  integrity sha1-v52q5If9alVz+JqjZV++ivA2r9I=
+
 caller-callsite@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/caller-callsite/-/caller-callsite-2.0.0.tgz#847e0fce0a223750a9a027c54b33731ad3154134"
@@ -2710,6 +2736,21 @@ copy-webpack-plugin@5.1.1:
     schema-utils "^1.0.0"
     serialize-javascript "^2.1.2"
     webpack-log "^2.0.0"
+
+cordova-plugin-actionsheet@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-actionsheet/-/cordova-plugin-actionsheet-2.3.3.tgz#e9261b2d004a8da407388d60df534c156c52ff11"
+  integrity sha1-6SYbLQBKjaQHOI1g31NMFWxS/xE=
+
+cordova-plugin-dialogs@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-dialogs/-/cordova-plugin-dialogs-2.0.2.tgz#ac3ce8b73bc885ff847078d5b533e7a4ed418a2f"
+  integrity sha512-FUHI6eEVeoz2VkxbF0P56QlUQLGzXcvw3i4xuXyM9gEct6Y+FA3Xzgl2pJTZcTg5wRqLWzN08kgNoHPkom15pw==
+
+cordova-plugin-email-composer@^0.9.2:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-email-composer/-/cordova-plugin-email-composer-0.9.2.tgz#264c66d45679acf2781c2cec54e32b2c1facfdb8"
+  integrity sha512-w8eQZ6lbYWut13o/Cprixmacfyq5hds7DAjuTL34eQhyWWd/DA/o6ziiyY3So2ZOozeQ4DxQpyPN4BiqUKcyew==
 
 core-js-compat@^3.6.2:
   version "3.6.4"
@@ -7990,6 +8031,11 @@ typescript@~3.4.3:
   version "3.4.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
   integrity sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
+
+uk.co.workingedge.phonegap.plugin.launchnavigator@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/uk.co.workingedge.phonegap.plugin.launchnavigator/-/uk.co.workingedge.phonegap.plugin.launchnavigator-5.0.4.tgz#fa3ebb98ee46c0f70124cc64a44409f68a51f59b"
+  integrity sha512-DMRb3kV9dUEDD2baJhUgLg4qDMQ21kdwkOuPvMzOnWfpIUe2WviVCH3BjJOoXVR+RrxxBsT5FtSDkC1yt8Sa4A==
 
 ultron@~1.1.0:
   version "1.1.1"
