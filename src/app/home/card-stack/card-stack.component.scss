@@ -20,5 +20,6 @@
     transition: all 0.3s ease-in-out;
     cursor: -webkit-grab;
     cursor: grab;
+    z-index: -1;
   }
 }

@@ -6,6 +6,7 @@ import { PetFinderService } from '../core/api/pet-finder.service';
 import { PetFinderAnimalModel } from '../core/interfaces/pet-finder-animal-model';
 import { forkJoin } from 'rxjs';
 import { PetFinderPaginationModel } from '../core/interfaces/pet-finder-pagination-model';
+import { PetFinderAnimalsResponseModel } from '../core/interfaces/pet-finder-animals-response-model';
 
 @Component({
   selector: 'app-home',
@@ -13,28 +14,19 @@ import { PetFinderPaginationModel } from '../core/interfaces/pet-finder-paginati
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
-  public animals: PetFinderAnimalModel[];
   private coordinates: Coordinates;
-  private pagination: PetFinderPaginationModel;
 
-  constructor(private dogsService: DogsService,
-              private location: LocationService,
-              private petFinder: PetFinderService) {}
+  constructor(private location: LocationService,
+              private dogsService: DogsService) {}
 
   public ngOnInit() {
     this.location.getLocation().subscribe((coords) => {
       this.coordinates = coords;
-
-      this.petFinder.getPetsByCoordinates(this.coordinates).subscribe(data => {
-        console.warn(data);
-        this.animals = data.animals;
-        this.pagination = data.pagination;
-      });
+      this.dogsService.getAnimals(this.coordinates);
     });
   }
 
-  onRefresh() {
-    this.dogsService.reset();
+  public onGetNextPage() {
+    this.dogsService.getNextPage();
   }
-
 }

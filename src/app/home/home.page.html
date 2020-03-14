@@ -4,7 +4,7 @@
       Home
     </ion-title>
     <ion-buttons slot="primary">
-      <ion-button (click)="onRefresh()">
+      <ion-button (click)="onGetNextPage()">
         <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -18,5 +18,5 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-card-stack [animals]="animals" *ngIf="animals"></app-card-stack>
+  <app-card-stack></app-card-stack>
 </ion-content>

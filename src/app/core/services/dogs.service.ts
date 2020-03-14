@@ -1,21 +1,43 @@
 import { Injectable } from '@angular/core';
-import { CardModel } from '../interfaces/card-model';
-import { of, Observable, Subject, BehaviorSubject } from 'rxjs';
-import { MOCK_DOGS } from '../constants/mock-data';
+import { Observable, Subject } from 'rxjs';
+import { PetFinderAnimalModel } from '../interfaces/pet-finder-animal-model';
+import { Coordinates } from '@ionic-native/geolocation/ngx';
+import { PetFinderService } from '../api/pet-finder.service';
+import { PetFinderAnimalsResponseModel } from '../interfaces/pet-finder-animals-response-model';
+import { PetFinderPaginationModel } from '../interfaces/pet-finder-pagination-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DogsService {
-  private dogs = new BehaviorSubject<CardModel[]>(MOCK_DOGS);
+  private animalsSubject = new Subject<PetFinderAnimalModel[]>();
+  private pagination: PetFinderPaginationModel;
 
-  constructor() { }
+  constructor(private petFinder: PetFinderService) { }
 
-  public get dogs$(): Observable<CardModel[]> {
-    return this.dogs.asObservable();
+  public get animals$(): Observable<PetFinderAnimalModel[]> {
+    return this.animalsSubject.asObservable();
   }
 
-  public reset() {
-    this.dogs.next(MOCK_DOGS);
+  public getAnimals(coordinates: Coordinates) {
+    this.petFinder.getPetsByCoordinates(coordinates).subscribe(data => {
+      this.getPetsSuccess(data);
+    });
   }
+
+  public getNextPage() {
+    this.petFinder.getResultsPage(this.nextPage).subscribe(data => {
+      this.getPetsSuccess(data);
+    });
+  }
+
+  private getPetsSuccess(data: PetFinderAnimalsResponseModel) {
+    this.animalsSubject.next(data.animals);
+    this.pagination = data.pagination;
+  }
+
+  private get nextPage(): string {
+    return this.pagination._links.next.href;
+  }
+
 }

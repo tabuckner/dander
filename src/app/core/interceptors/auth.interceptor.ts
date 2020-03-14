@@ -14,8 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
               private toastController: ToastController) { }
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.warn('intercept', request)
-
     let token: string = this.auth.getToken();
 
     if (token) {
@@ -26,14 +24,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.warn('error', error)
         if (error.status === 401 || error.status === 0) {
-          console.warn(error);
 
           return this.auth.fetchToken().pipe(
             flatMap(() => {
               token = this.auth.getToken();
-              console.warn('token', token)
 
               if (token) {
                 request = this.addTokenToRequest(request, token);
