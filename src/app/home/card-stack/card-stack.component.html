@@ -5,9 +5,16 @@
   </div>
 </div> -->
 <div class="card-stack">
-  <mat-spinner *ngIf="!cards || cards.length < 1"></mat-spinner>
-  <div class="card-stack__card" *ngFor="let card of cards; let i = index"
-    [ngStyle]="{ zIndex: maxZIndex - i, transform: 'scale(' + getSafeScaleValue(i) + ') translateY(-' + 20 * i + 'px)' }">
-    <app-card [card]="card" (selectionMade)="onCardChoiceMade($event, card)"></app-card>
-  </div>
+  <ng-container *ngIf="cards && cards.length > 0">
+    <div class="card-stack__card" *ngFor="let card of cards; let i = index"
+      [ngStyle]="{ zIndex: maxZIndex - i, transform: 'scale(' + getSafeScaleValue(i) + ') translateY(-' + 20 * i + 'px)' }">
+      <app-card [card]="card" (selectionMade)="onCardChoiceMade($event, card)"></app-card>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!cards || cards.length < 1">
+    <div class="card-stack__card" *ngFor="let card of skeletonCards; let i = index"
+      [ngStyle]="{ zIndex: maxZIndex - i, transform: 'scale(' + getSafeScaleValue(i) + ') translateY(-' + 20 * i + 'px)' }">
+      <app-card-skeleton></app-card-skeleton>
+    </div>
+  </ng-container>
 </div>

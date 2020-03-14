@@ -20,14 +20,10 @@ export class HomePage implements OnInit {
               private dogsService: DogsService) {}
 
   public ngOnInit() {
-    setTimeout(() => {
+    this.location.getLocation().subscribe((coords) => {
+      this.coordinates = coords;
       this.dogsService.getAnimals(this.coordinates);
     });
-
-    // this.location.getLocation().subscribe((coords) => {
-    //   this.coordinates = coords;
-    //   this.dogsService.getAnimals(this.coordinates);
-    // });
   }
 
   public onGetNextPage() {

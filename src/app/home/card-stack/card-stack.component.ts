@@ -14,7 +14,8 @@ import { PAGINATION_SETTINGS } from 'src/app/core/constants/settings/pagination.
 export class CardStackComponent implements OnInit {
   @Output() public choiceMade = new EventEmitter<SelectionEventModel>();
   public cards: CardModel[] = [];
-  public maxZIndex = PAGINATION_SETTINGS.pageSize;;
+  public skeletonCards = new Array(20);
+  public maxZIndex = PAGINATION_SETTINGS.pageSize;
 
   constructor(private dogsService: DogsService) { }
 

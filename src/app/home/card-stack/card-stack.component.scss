@@ -11,6 +11,8 @@
 
   &__card {
     height: 100%;
+    width: 100%;
+    max-width: 450px;
     padding: 16px 24px;
     position: absolute;
     will-change: transform;

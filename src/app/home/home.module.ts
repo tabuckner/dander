@@ -13,6 +13,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { CardStackComponent } from './card-stack/card-stack.component';
 import { CardComponent } from './card/card.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { CardSkeletonComponent } from './card-skeleton/card-skeleton.component';
 
 export const HOME_MAT_IMPORTS = [
   MatCardModule,
@@ -34,7 +35,8 @@ export const HOME_MAT_IMPORTS = [
     HomePage,
     CardStackComponent,
     CardComponent,
-    CardDetailsComponent
+    CardDetailsComponent,
+    CardSkeletonComponent,
   ],
   entryComponents: [
     CardDetailsComponent,

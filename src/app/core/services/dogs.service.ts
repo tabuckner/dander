@@ -21,10 +21,10 @@ export class DogsService {
   }
 
   public getAnimals(coordinates: Coordinates) {
-    this.getPetsSuccess(PET_FINDER_RESPONSE_MOCK);
-    // this.petFinder.getPetsByCoordinates(coordinates).subscribe(data => {
-    //   this.getPetsSuccess(data);
-    // });
+    // this.getPetsSuccess(PET_FINDER_RESPONSE_MOCK);
+    this.petFinder.getPetsByCoordinates(coordinates).subscribe(data => {
+      this.getPetsSuccess(data);
+    });
   }
 
   public getNextPage() {
