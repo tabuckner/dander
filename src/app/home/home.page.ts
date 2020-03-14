@@ -20,11 +20,9 @@ export class HomePage implements OnInit {
               private petFinder: PetFinderService) {}
 
   public ngOnInit() {
-    forkJoin(this.location.getLocation(), this.petFinder.getAccessToken()).subscribe((response) => {
-      const coords = response[0];
-      const tokenReceived = response[1];
-
+    this.location.getLocation().subscribe((coords) => {
       this.coordinates = coords;
+
       this.petFinder.getPetsByLat(this.coordinates).subscribe(data => {
         console.warn(data);
         this.animals = data.animals;

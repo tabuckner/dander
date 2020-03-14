@@ -19,7 +19,9 @@ export class CardStackComponent implements OnInit {
 
   ngOnInit() {
     this.cards = this.animals.map((animal) => {
-      const image = animal && animal.photos && animal.photos[0] && animal.photos[0].medium ? animal.photos[0].medium : 'https://www.bil-jac.com/Images/DogPlaceholder.svg';
+      const image = animal && animal.photos && animal.photos[0] && animal.photos[0].medium
+        ? animal.photos[0].medium
+        : 'https://www.bil-jac.com/Images/DogPlaceholder.svg';
       return {
         id: animal.id,
         name: animal.name,
