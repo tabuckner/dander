@@ -17,7 +17,7 @@ export interface AppLatLong {
 export class LocationService {
 
   constructor(private geolocation: Geolocation,
-              private settings: SettingsService) { }
+    private settings: SettingsService) { }
 
   public getLocation(): Observable<AppLatLong> {
     const locationSetting$ = from(this.settings.getSetting<AppLatLong>(SETTINGS_KEYS.location));
@@ -27,13 +27,42 @@ export class LocationService {
       (locationFromSettings: AppLatLong) => iif(
         () => isNullOrUndefined(locationFromSettings) || Object.keys(locationFromSettings).length < 1,
         currentPosition$.pipe(
-          map(resp => (this.mapGeopositionToAppLatLong(resp))),
+          tap(() => console.warn('is null or undefined')),
+          map(resp => this.mapGeopositionToAppLatLong(resp)),
+          tap((nextAppLatLong) => {
+            this.settings.setSetting(SETTINGS_KEYS.location, nextAppLatLong);
+          }),
         ),
         of(locationFromSettings).pipe(
           tap(() => this.backgroundUpdateLocation(locationFromSettings))
         )
       )
     ));
+  }
+
+  /**
+   * Updates location and returns true/false on whether there was an update.
+   */
+  public async updateLocation(): Promise<boolean> {
+    const newPosition = await this.geolocation.getCurrentPosition();
+    const nextLocation = this.mapGeopositionToAppLatLong(newPosition);
+    const locationFromStorage = await this.settings.getSetting<AppLatLong>(SETTINGS_KEYS.location);
+
+    if (!locationFromStorage) {
+      await this.settings.setSetting(SETTINGS_KEYS.location, nextLocation);
+      return true;
+    }
+
+    const locationsAreEqual = this.appLatLongsAreEqual(locationFromStorage, nextLocation);
+
+    if (locationsAreEqual) {
+      await this.settings.setSetting(SETTINGS_KEYS.location, nextLocation);
+      return true;
+    }
+
+    if (!locationsAreEqual) {
+      return false;
+    }
   }
 
   private mapGeopositionToAppLatLong(geoposition: Geoposition): AppLatLong {
@@ -43,12 +72,17 @@ export class LocationService {
   private backgroundUpdateLocation(locationFromSettings: AppLatLong) {
     this.geolocation.getCurrentPosition().then((newPosition) => {
       const nextAppLatLong = this.mapGeopositionToAppLatLong(newPosition);
-      const latHasChanged = nextAppLatLong.lat !== locationFromSettings.lat;
-      const longHasChanged = nextAppLatLong.long !== locationFromSettings.long;
-      if (!latHasChanged || !longHasChanged) {
+      if (this.appLatLongsAreEqual(locationFromSettings, nextAppLatLong)) {
         return;
       }
+
       this.settings.setSetting(SETTINGS_KEYS.location, nextAppLatLong);
     });
+  }
+
+  private appLatLongsAreEqual(before: AppLatLong, after: AppLatLong): boolean {
+    const latHasNotChanged = after.lat !== before.lat;
+    const longHasNotChanged = after.long !== before.long;
+    return latHasNotChanged && longHasNotChanged;
   }
 }

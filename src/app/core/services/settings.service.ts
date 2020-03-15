@@ -12,13 +12,12 @@ export class SettingsService {
   constructor(private storage: Storage) { }
 
   public async setSetting<T>(key: SETTINGS_KEYS, value: any): Promise<T> {
-    // const stringified = JSON.stringify();
-    console.warn(value);
+    await this.storage.ready();
     return await this.storage.set(key, value);
   }
 
   public async getSetting<T>(key: SETTINGS_KEYS): Promise<T> {
-    console.warn('hit')
+    await this.storage.ready();
     return await this.storage.get(key);
   }
 }

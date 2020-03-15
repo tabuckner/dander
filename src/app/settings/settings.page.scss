@@ -1,0 +1,38 @@
+.setting {
+  &__subtitle {
+    font-size: 12px;
+    opacity: 0.66;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    h3 {
+      font-size: inherit;
+    }
+
+    .mat-icon {
+      height: 12px;
+      width: 12px;
+      font-size: inherit;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 18px;
+
+    &__label {
+      margin-right: 8px;
+    }
+
+    &__value {
+
+      &--skeleton {
+        width: 50px;
+        line-height: normal;
+      }
+    }
+  }
+}
