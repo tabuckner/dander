@@ -2768,6 +2768,11 @@ cordova-plugin-email-composer@^0.9.2:
   resolved "https://registry.yarnpkg.com/cordova-plugin-email-composer/-/cordova-plugin-email-composer-0.9.2.tgz#264c66d45679acf2781c2cec54e32b2c1facfdb8"
   integrity sha512-w8eQZ6lbYWut13o/Cprixmacfyq5hds7DAjuTL34eQhyWWd/DA/o6ziiyY3So2ZOozeQ4DxQpyPN4BiqUKcyew==
 
+cordova-plugin-geolocation@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-geolocation/-/cordova-plugin-geolocation-4.0.2.tgz#4668a01ae8a49e27c5515f8b81880983e96d7eb3"
+  integrity sha512-QGThnPKzPxESHkruZlpE0+5aFBVOet8al0vIJ7laSUOQHIC1dd/JY6peVIbtLboKi5Dap1wCKRubOqPqH8xcQA==
+
 cordova-plugin-nativestorage@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-nativestorage/-/cordova-plugin-nativestorage-2.3.2.tgz#d6a1d50632aff2a70227102f68bc605e91aabca2"
