@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -31,4 +31,8 @@
     border-top-right-radius: 24px !important;
     border-top-left-radius: 24px !important;
   }
+}
+
+.ion-content--settings { // Notch fix.
+  --padding-top: var(--ion-safe-area-top);
 }
