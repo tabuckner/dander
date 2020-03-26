@@ -1,4 +1,21 @@
-.setting {
+.settings {
+  &__user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__item {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    ion-avatar {
+      margin-bottom: 8px;
+    }
+  }
+
   &__subtitle {
     font-size: 12px;
     opacity: 0.66;

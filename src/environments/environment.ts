@@ -7,6 +7,16 @@ export const environment = {
   petFinder: {
     id: 'jydZ85I6r81zgjQCvaTjTnB8QBUauslXEeqARU5XWk0ohZludm',
     secret: 'Zh5UHg0CE4Wpoi8nyy9RdFTe5Xr1WgSaGJ9KBJDv',
+  },
+  firebase: {
+    apiKey: 'AIzaSyA8KZ49LZwjtLbJ_i2SUyj4mBKpZkPSKfU',
+    authDomain: 'dander-ab817.firebaseapp.com',
+    databaseURL: 'https://dander-ab817.firebaseio.com',
+    projectId: 'dander-ab817',
+    storageBucket: 'dander-ab817.appspot.com',
+    messagingSenderId: '42773301575',
+    appId: '1:42773301575:web:b5838d2da9bf99499de462',
+    measurementId: 'G-9X9HSDJ52Q'
   }
 };
 

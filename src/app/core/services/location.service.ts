@@ -27,7 +27,6 @@ export class LocationService {
       (locationFromSettings: AppLatLong) => iif(
         () => isNullOrUndefined(locationFromSettings) || Object.keys(locationFromSettings).length < 1,
         currentPosition$.pipe(
-          tap(() => console.warn('is null or undefined')),
           map(resp => this.mapGeopositionToAppLatLong(resp)),
           tap((nextAppLatLong) => {
             this.settings.setSetting(SETTINGS_KEYS.location, nextAppLatLong);

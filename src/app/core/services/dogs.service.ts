@@ -35,7 +35,6 @@ export class DogsService {
   }
 
   private getPetsSuccess(data: PetFinderAnimalsResponseModel) {
-    console.warn(data)
     this.animalsSubject.next(data.animals);
     this.pagination = data.pagination;
   }

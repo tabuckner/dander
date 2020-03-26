@@ -23,6 +23,11 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 export const APP_MAT_IMPORTS = [
   MatIconModule
 ];
@@ -38,7 +43,11 @@ export const APP_MAT_IMPORTS = [
     BrowserAnimationsModule,
     ...APP_MAT_IMPORTS,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,
@@ -50,6 +59,7 @@ export const APP_MAT_IMPORTS = [
     CallNumber,
     EmailComposer,
     LaunchNavigator,
+    AngularFirestoreModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,33 +1,59 @@
 <ion-content padding class="ion-content--settings">
   <ion-list>
-    <ion-list-header>Settings</ion-list-header>
+    <ion-list-header>
+      <ion-label>
+        <h1>Settings</h1>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>
+        <div class="settings__user-info">
+          <div class="settings__user-info__item">
+            <ion-avatar>
+              <img [src]="userData?.photoURL || ''" alt="">
+            </ion-avatar>
+          </div>
+          <div class="settings__user-info__item">
+            <h3>{{ userData?.displayName }}</h3>
+          </div>
+          <div class="settings__user-info__item">
+            <p>{{ userData?.email }}</p>
+          </div>
+          <div class="settings__user-info__item">
+            <ion-button fill="clear" (click)="onLogOut()">Log Out</ion-button>
+          </div>
+        </div>
+      </ion-label>
+    </ion-item>
+
     <ion-item>
       <ion-label>
         <h2>Location</h2>
-        <div class="setting__subtitle">
+        <div class="settings__subtitle">
           <h3>Geolocation <mat-icon>gps_fixed</mat-icon>
           </h3>
         </div>
         <div *ngIf="location?.lat && location?.long">
-          <div class="setting__item">
-            <div class="setting__item__label">
+          <div class="settings__item">
+            <div class="settings__item__label">
               <h4>Latitude: </h4>
             </div>
-            <div class="setting__item__value" *ngIf="!locationUpdating">
+            <div class="settings__item__value" *ngIf="!locationUpdating">
               {{ location?.lat | number:'1.0-3'}}
             </div>
-            <div class="setting__item__value setting__item__value--skeleton" *ngIf="locationUpdating">
+            <div class="settings__item__value settings__item__value--skeleton" *ngIf="locationUpdating">
               <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
             </div>
           </div>
-          <div class="setting__item">
-            <div class="setting__item__label">
+          <div class="settings__item">
+            <div class="settings__item__label">
               <h4>Longitude: </h4>
             </div>
-            <div class="setting__item__value" *ngIf="!locationUpdating">
+            <div class="settings__item__value" *ngIf="!locationUpdating">
               {{ location?.long | number:'1.0-3'}}
             </div>
-            <div class="setting__item__value setting__item__value--skeleton" *ngIf="locationUpdating">
+            <div class="settings__item__value settings__item__value--skeleton" *ngIf="locationUpdating">
               <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
             </div>
           </div>
