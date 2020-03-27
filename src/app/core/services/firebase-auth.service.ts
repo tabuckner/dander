@@ -27,10 +27,8 @@ export class FirebaseAuthService {
     this.storage.ready().then(() => {
       this.ngFireAuth.authState.subscribe((user) => {
         if (!user) {
-          console.warn('no user');
           return;
         }
-        console.warn('user found', user);
         const nextUserData = this.mapFirestoreUserToUserModel(user);
         this.updateUserData(nextUserData);
       });
