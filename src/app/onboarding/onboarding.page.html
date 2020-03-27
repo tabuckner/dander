@@ -1,0 +1,44 @@
+<ion-content padding>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <div class="container">
+        <h2>Welcome to</h2>
+        <h1>Dander</h1>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="container">
+        <h1>Quickly sift through a pool of available dogs near you!</h1>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="container">
+        <h1>Swipe Left to skip a dog.</h1>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="container">
+        <h1>Swipe Right to add a dog to your favorites.</h1>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="container">
+        <h1>In the Settings Tab you can:</h1>
+        <h2>
+          <ul>
+            <li>Update your location</li>
+            <li>View the dogs you've added to your favorites.</li>
+          </ul>
+        </h2>
+      </div>
+    </ion-slide>
+    <ion-slide class="swiper-slide--split">
+      <div class="container--split">
+        <h1>Ready to get started?</h1>
+      </div>
+      <div class="container--split">
+        <ion-button expand="block" color="primary" (click)="onContinue()">Let's Go!</ion-button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

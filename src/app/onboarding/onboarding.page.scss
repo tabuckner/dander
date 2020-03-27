@@ -1,0 +1,30 @@
+ion-slides {
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+
+  &--split {
+    flex-direction: column;
+
+    ion-button {
+      margin: 48px 16px;
+    }
+  }
+
+  ul {
+    text-align: left;
+  }
+}
+
+.container {
+
+  &--split {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}

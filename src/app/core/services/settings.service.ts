@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SETTINGS_KEYS } from '../enums/settings-keys.enum';
 import { Storage } from '@ionic/storage';
-import * as cloneDeep from 'lodash.clonedeep';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Injectable({
   providedIn: 'root'
