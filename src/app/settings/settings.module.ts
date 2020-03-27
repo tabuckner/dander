@@ -10,6 +10,7 @@ import { SettingsPage } from './settings.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { FavoritesPage } from './favorites/favorites.page';
 
 export const SETTINGS_MAT_IMPORTS = [
   MatIconModule,
@@ -25,6 +26,9 @@ export const SETTINGS_MAT_IMPORTS = [
     ExploreContainerComponentModule,
     ...SETTINGS_MAT_IMPORTS,
   ],
-  declarations: [SettingsPage]
+  declarations: [
+    SettingsPage,
+    FavoritesPage
+  ]
 })
 export class SettingsPageModule { }

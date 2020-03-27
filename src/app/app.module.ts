@@ -27,6 +27,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { CardDetailsComponent } from './home/card-details/card-details.component';
+import { HomePageModule } from './home/home.module';
+// import { FavoritesPage } from './settings/favorites/favorites.page';
+// import { FavoritesPageModule } from './settings/favorites/favorites.module';
 
 export const APP_MAT_IMPORTS = [
   MatIconModule
@@ -34,7 +38,7 @@ export const APP_MAT_IMPORTS = [
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [CardDetailsComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -48,6 +52,7 @@ export const APP_MAT_IMPORTS = [
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    HomePageModule, // TODO: Shared Component.
   ],
   providers: [
     StatusBar,

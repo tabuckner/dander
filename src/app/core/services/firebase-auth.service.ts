@@ -19,16 +19,18 @@ export class FirebaseAuthService {
   private userDataSubject = new BehaviorSubject<UserModel>(undefined);
 
   constructor(public afStore: AngularFirestore,
-    public ngFireAuth: AngularFireAuth,
-    public router: Router,
-    public ngZone: NgZone,
-    private storage: Storage,
-    private toast: ToastController) {
+              public ngFireAuth: AngularFireAuth,
+              public router: Router,
+              public ngZone: NgZone,
+              private storage: Storage,
+              private toast: ToastController) {
     this.storage.ready().then(() => {
       this.ngFireAuth.authState.subscribe((user) => {
         if (!user) {
+          console.warn('no user');
           return;
         }
+        console.warn('user found', user);
         const nextUserData = this.mapFirestoreUserToUserModel(user);
         this.updateUserData(nextUserData);
       });

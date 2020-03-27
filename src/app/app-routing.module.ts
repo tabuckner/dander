@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
     canLoad: [AuthGuard]
   },
+  // {
+  //   path: 'favorites',
+  //   loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
+  // },
 ];
 @NgModule({
   imports: [

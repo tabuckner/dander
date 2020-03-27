@@ -63,5 +63,11 @@
         <mat-icon>refresh</mat-icon>
       </button>
     </ion-item>
+
+    <ion-item (click)="onFavorites()" class="ion-activatable ripple-parent">
+      <ion-label>Favorites</ion-label>
+      <ion-note slot="end">{{ favorites?.length }}</ion-note>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-item>
   </ion-list>
 </ion-content>

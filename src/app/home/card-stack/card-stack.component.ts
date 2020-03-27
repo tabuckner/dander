@@ -5,6 +5,8 @@ import { DogsService } from 'src/app/core/services/dogs.service';
 import { CardChoices } from 'src/app/core/enums/card-choices.enum';
 import { PetFinderAnimalModel } from 'src/app/core/interfaces/pet-finder-animal-model';
 import { PAGINATION_SETTINGS } from 'src/app/core/constants/settings/pagination.settings';
+import { LikesService } from 'src/app/core/services/likes.service';
+import { AnimalToCardService } from 'src/app/core/services/animal-to-card.service';
 
 @Component({
   selector: 'app-card-stack',
@@ -17,17 +19,22 @@ export class CardStackComponent implements OnInit {
   public skeletonCards = new Array(20);
   public maxZIndex = PAGINATION_SETTINGS.pageSize;
 
-  constructor(private dogsService: DogsService) { }
+  constructor(private dogsService: DogsService,
+              private likesService: LikesService,
+              private animalToCard: AnimalToCardService) { }
 
   ngOnInit() {
     this.dogsService.animals$.subscribe(animals => {
-      const nextCardBatch = this.mapAnimalsToCards(animals);
+      const nextCardBatch = this.animalToCard.mapAnimalsToCards(animals);
       this.cards.push(...nextCardBatch);
     });
   }
 
   public onCardChoiceMade(choice: CardChoices, card: CardModel) {
     const selection: SelectionEventModel = { card, choice };
+    if (selection && selection.card && selection.card.id && selection.choice === CardChoices.like) {
+      this.likesService.addFavorite(selection.card);
+    }
     this.choiceMade.emit(selection);
     setTimeout(() => {
       this.cards = this.cards.filter(_card => _card.id !== card.id);
@@ -39,36 +46,6 @@ export class CardStackComponent implements OnInit {
 
   public getSafeScaleValue(i: number): number {
     return Math.max(0, (20 - i) / 20);
-  }
-
-  private mapAnimalsToCards(animals: PetFinderAnimalModel[]) {
-    const cards = animals.map((animal) => {
-      const normalizedName = animal.name.charAt(0).toUpperCase() + animal.name.slice(1).toLowerCase();
-      const image = animal && animal.photos && animal.photos[0] && animal.photos[0].medium
-        ? animal.photos[0].medium
-        : 'https://www.bil-jac.com/Images/DogPlaceholder.svg';
-      const breedString = animal.breeds.mixed
-        ? `${animal.breeds.primary} and ${animal.breeds.secondary || 'Something'}`
-        : animal.breeds.primary;
-
-      const card: CardModel = {
-        id: animal.id,
-        name: normalizedName,
-        breed: breedString,
-        age: `${animal.age}`,
-        gender: animal.gender,
-        size: animal.size,
-        imageUrl: image,
-        description: animal.description,
-        externalUrl: animal.url,
-        published: animal.published_at,
-        lastUpdated: animal.status_changed_at,
-        attributes: { ...animal.attributes },
-        organizationId: animal.organization_id,
-      };
-      return card;
-    });
-    return cards;
   }
 
   private get cardCountIsTooLow(): boolean {

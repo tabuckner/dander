@@ -32,6 +32,11 @@ export class PetFinderService {
     return this.http.get<PetFinderAnimalsResponseModel>(url, httpOptions);
   }
 
+  public getPet(id: number): Observable<{animal: PetFinderAnimalModel}> {
+    const url = `${this.BASE_URL}/${this.apiVersion}/animals/${id}`;
+    return this.http.get<{animal: PetFinderAnimalModel}>(url);
+  }
+
   public getResultsPage(page: string): Observable<PetFinderAnimalsResponseModel> {
     const url = `${this.BASE_URL}${page}`;
     return this.http.get<PetFinderAnimalsResponseModel>(url);
@@ -43,7 +48,6 @@ export class PetFinderService {
       map(response => response.organization)
     );
   }
-
 
   public getImage(url: string): Observable<any> {
     return this.http.get(url);
