@@ -21,7 +21,7 @@ export class PetFinderService {
   constructor(private http: HttpClient) { }
 
   public getPetsByCoordinates(coordinates: AppLatLong): Observable<PetFinderAnimalsResponseModel> {
-    return of(PET_FINDER_RESPONSE_MOCK);
+    // return of(PET_FINDER_RESPONSE_MOCK);
     const url = `${this.BASE_URL}/${this.apiVersion}/animals`;
     const httpOptions = {
       params: new HttpParams()

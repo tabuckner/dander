@@ -185,8 +185,10 @@
 
     <div class="card-details__spacer"></div>
 
-    <div class="card-details__view-adoption">
-      <ion-button fill="clear" color="primary" (click)="onViewAdoption()">View Adoption</ion-button>
+    <div class="card-details__actions mat-elevation-z3">
+      <div class="card-details__view-adoption">
+        <ion-button fill="solid" color="dark" (click)="onViewAdoption()">View Adoption</ion-button>
+      </div>
     </div>
     <div class="card-details__last-updated">
       Last Updated {{ card.lastUpdated | date:'short' }}

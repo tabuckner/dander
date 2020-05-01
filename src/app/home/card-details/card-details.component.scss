@@ -208,5 +208,16 @@ $card-padding: 32px;
     font-size: 14px;
     opacity: 0.33;
     text-align: center;
+    margin-bottom: 68px; // NOTE: Actions height + 8px
+  }
+
+  &__actions {
+    position: fixed;
+    background: var(--ion-background-color, #fff);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    padding: 8px;
   }
 }
