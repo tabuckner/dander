@@ -73,7 +73,8 @@
             <div 
               *ngSwitchCase="'video'"
               class="card-details__photos__thumbnail card-details__photos__thumbnail--video"
-              [ngStyle]="{'background-image': additionalMedia.thumbnail ? 'url(' + additionalMedia.thumbnail + ')' : 'none'}">
+              [ngStyle]="{'background-image': additionalMedia.thumbnail ? 'url(' + additionalMedia.thumbnail + ')' : 'none'}"
+              (click)="onTapThumbnail(additionalMedia)">
             </div>
           </ng-container>
         </ng-container>

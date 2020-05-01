@@ -14,6 +14,7 @@ import { CardComponent } from './card/card.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { CardSkeletonComponent } from './card-skeleton/card-skeleton.component';
 import { ImageModalComponent } from './image-modal/image-modal.component';
+import { VideoModalComponent } from './video-modal/video-modal.component';
 
 export const HOME_MAT_IMPORTS = [
   MatCardModule,
@@ -37,10 +38,12 @@ export const HOME_MAT_IMPORTS = [
     CardDetailsComponent,
     CardSkeletonComponent,
     ImageModalComponent,
+    VideoModalComponent,
   ],
   entryComponents: [
     CardDetailsComponent,
     ImageModalComponent,
+    VideoModalComponent,
   ]
 })
 export class HomePageModule {}

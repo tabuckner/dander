@@ -8,6 +8,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import { EmailComposer, EmailComposerOptions } from '@ionic-native/email-composer/ngx';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
+import { VideoModalComponent } from '../video-modal/video-modal.component';
 
 @Component({
   selector: 'app-card-details',
@@ -87,7 +88,11 @@ export class CardDetailsComponent implements OnInit {
   }
 
   public async onTapThumbnail(thumbnail: AdditionalMediaModel) {
-    return await this.presentImageModal(thumbnail.src);
+    if (thumbnail.type === 'image') {
+      return await this.presentImageModal(thumbnail.src);
+    }
+
+    return await this.presentVideoModal(thumbnail.src);
   }
 
   private async presentImageModal(url: string) {
@@ -95,6 +100,16 @@ export class CardDetailsComponent implements OnInit {
       component: ImageModalComponent,
       componentProps: {
         src: url
+      }
+    });
+    return await modal.present();
+  }
+
+  private async presentVideoModal(embedString: string) {
+    const modal = await this.modalController.create({
+      component: VideoModalComponent,
+      componentProps: {
+        embedString
       }
     });
     return await modal.present();
