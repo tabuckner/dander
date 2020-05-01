@@ -6,6 +6,7 @@ import { PetFinderService } from 'src/app/core/api/pet-finder.service';
 import { ExternalLinkService } from 'src/app/core/services/external-link.service';
 import { ModalController, Platform } from '@ionic/angular';
 import { CardDetailsComponent } from '../card-details/card-details.component';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-card',
@@ -125,6 +126,16 @@ export class CardComponent implements OnInit, AfterViewInit {
   public onDislike() {
     this.animateCard(CardChoices.dislike);
     this.selectionMade.emit(CardChoices.dislike);
+  }
+
+  public async onTapImage() {
+    const modal = await this.modalController.create({
+      component: ImageModalComponent,
+      componentProps: {
+        src: this.card.additionalMediaUrls[0].src
+      }
+    });
+    return await modal.present();
   }
 
   private animateCard(choice: CardChoices) {

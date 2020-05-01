@@ -6,7 +6,8 @@
       <div class="card__top__inset"></div>
       <div 
         class="card__image"
-        [ngStyle]="{'background-image': card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'}">
+        [ngStyle]="{'background-image': card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'}"
+        (click)="onTapImage()">
       </div>
     </div>
 
