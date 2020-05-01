@@ -8,6 +8,7 @@
   transition: all 0.3s ease-in-out;
   border-radius: 16px;
   text-align: left;
+  color: #263238;
 
   &--moving {
     transition: none;
@@ -61,20 +62,61 @@
       left: 0;
       width: calc(100% + 32px);
       height: calc(50% + 16px);
-      background: rgba(0, 0, 0, .08); // NOTE: Wont work for dark mode.
+      background: #ECEFF1; // NOTE: Wont work for dark mode.
       z-index: 0;
       margin: -16px;
     }
   }
 
-  &__heading {
-    margin-bottom: 8px;
-  }
+  &__info {
+    
+    &__heading {
+      display: flex;
+      align-items: center;
+      font-size: 32px;
+      line-height: 38px;
+      margin-bottom: 16px;
+    }
 
-  &__title {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
+    &__subheading {
+      display: flex;
+      font-size: 14px;
+      line-height: 14px;
+      margin-bottom: 16px;
+
+      &__item {
+        width: 50%;
+
+        &:first-of-type {
+          border-right: 1px solid #ECEFF1;
+        }
+
+        &:last-of-type {
+          padding-left: 16px;
+        }
+      }
+
+      &__label {
+        margin-bottom: 4px;
+      }
+
+      &__value {
+        font-size: 12px;
+        opacity: .54;
+      }
+    }
+
+    &__body {
+      opacity: .54;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 16px;
+    }
+
+    &__view-more {
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 
   &__subtitle {
@@ -90,14 +132,11 @@
   }
 
   &__gender {
-    height: 16px;
-    width: 16px;
-    font-size: 16px;
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+    line-height: 18px;
     opacity: 0.33;
-  }
-
-  &__breed {
-    font-size: 14px;
   }
 
   &__available-since {
@@ -105,11 +144,7 @@
   }
 
   &__description {
-    &__help-text {
-      font-size: 12px;
-      text-align: center;
-      opacity: .66;
-    }
+    margin-bottom: 16px;
   }
 
   &__actions {
