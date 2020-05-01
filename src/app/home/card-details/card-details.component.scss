@@ -125,7 +125,8 @@ $card-padding: 32px;
     }
 
     &__list {
-      overflow-x: scroll;
+      overflow-x: auto;
+      overflow-y: hidden;
       display: flex;
     }
 
@@ -133,7 +134,6 @@ $card-padding: 32px;
       position: relative;
       min-height: 88px;
       min-width: 88px;
-      margin: 16px auto;
       background-size: cover;
       background-position: center;
       border-radius: 8px;
