@@ -48,16 +48,16 @@
 
       <div class="card__spacer card__spacer--limited"></div>
       
-      <div class="ion-activatable ripple-parent card__info__body" (click)="onDescription()">
+      <div class="card__info__body">
         <div class="card__description">
           <p>
             {{ card.description || 'We don\'t have a ton of info on this dog. Tap the \'View Adoption\' button to go to the adoption page.' }}
           </p>
         </div>
-        <div class="card__info__view-more">
+        <div class="ion-activatable ripple-parent card__info__view-more" (click)="onDescription()">
           View More
+          <ion-ripple-effect></ion-ripple-effect>
         </div>
-        <ion-ripple-effect></ion-ripple-effect>
       </div>
     </div>
     
