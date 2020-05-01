@@ -9,7 +9,7 @@
 
     <div class="card-details__content__section card-details__heading">
       <div class="card-details__title">
-        <div class="card-details__name">{{ card.name }},</div>
+        <div class="card-details__name">{{ card.name }}</div>
         <div class="card-details__gender" *ngIf="card.gender === 'Male'">
           <svg height="100%" viewBox="0 0 384 384" width="100%" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -45,22 +45,37 @@
     </div>
 
     <div class="card-details__content__section card-details__description">
-      {{ card.description || 'We don\'t have a ton of info on this dog. Tap the \'View Adoption\' button to go to the adoption page.' }}
+      <div class="card-details__description__text">
+        {{ card.description || 'We don\'t have a ton of info on this dog. Tap the \'View Adoption\' button to go to the adoption page.' }}
+      </div>
+      <div class="card-details__available-since">
+        <div class="card-details__available-since__label">
+          Available Since
+        </div>
+        <div class="card-details__available-since__value">
+          {{ card.published | date:'short' }}
+        </div>
+      </div>
     </div>
 
-    <div class="card-details__available-since">
-      <div class="card-details__available-since__label">
-        Available Since
-      </div>
-      <div class="card-details__available-since__value">
-        {{ card.published | date:'short' }}
-      </div>
-    </div>
 
     <div class="card-details__content__section card-details__photos">
       <div class="card-details__photos__heading">Photos</div>
       <div class="card-details__photos__list">
-
+        <ng-container *ngFor="let additionalMedia of card.additionalMediaUrls">
+          <ng-container [ngSwitch]="additionalMedia.type">
+            <div 
+              *ngSwitchCase="'image'"
+              class="card-details__photos__thumbnail" 
+              [ngStyle]="{'background-image': additionalMedia.thumbnail ? 'url(' + additionalMedia.thumbnail + ')' : 'none'}">
+            </div>
+            <div 
+              *ngSwitchCase="'video'"
+              class="card-details__photos__thumbnail card-details__photos__thumbnail--video"
+              [ngStyle]="{'background-image': additionalMedia.thumbnail ? 'url(' + additionalMedia.thumbnail + ')' : 'none'}">
+            </div>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
 

@@ -45,9 +45,25 @@ export const PET_FINDER_RESPONSE_MOCK: PetFinderAnimalsResponseModel = {
           medium: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=300',
           large: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=600',
           full: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300'
+        },
+        {
+          small: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=100',
+          medium: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=300',
+          large: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=600',
+          full: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300'
+        },
+        {
+          small: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=100',
+          medium: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=300',
+          large: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300&width=600',
+          full: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616025/1/?bust=1584181300'
+        },
+      ],
+      videos: [
+        {
+          embed: '<iframe src=\"https://www.youtube.com/embed/xaXbs1fRFRM\" frameborder=\"0\" allowfullscreen></iframe>',
         }
       ],
-      videos: [],
       status: 'adoptable',
       status_changed_at: '2020-03-14T10:08:34+0000',
       published_at: '2020-03-14T10:08:34+0000',
@@ -126,7 +142,11 @@ export const PET_FINDER_RESPONSE_MOCK: PetFinderAnimalsResponseModel = {
           full: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47616024/2/?bust=1584181264'
         }
       ],
-      videos: [],
+      videos: [
+        {
+          embed: '<iframe src=\"https://www.some-other-site.com/embed/xaXbs1fRFRM\" frameborder=\"0\" allowfullscreen></iframe>',
+        }
+      ],
       status: 'adoptable',
       status_changed_at: '2020-03-14T10:08:34+0000',
       published_at: '2020-03-14T10:08:34+0000',

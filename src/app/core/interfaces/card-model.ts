@@ -8,10 +8,17 @@ export interface CardModel {
   gender: string;
   size: string;
   imageUrl: string;
+  additionalMediaUrls?: Array<AdditionalMediaModel>;
   description: string;
   externalUrl: string;
   published: string;
   lastUpdated: string;
   attributes: Attributes;
   organizationId: string;
+}
+
+export interface AdditionalMediaModel {
+  type: 'image' | 'video';
+  thumbnail: string;
+  src: string;
 }

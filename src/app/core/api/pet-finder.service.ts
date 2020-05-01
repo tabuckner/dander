@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Coordinates } from '@ionic-native/geolocation/ngx';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { PetFinderAnimalModel } from 'src/app/core/interfaces/pet-finder-animal-model';
 import { PetFinderAnimalsResponseModel } from '../interfaces/pet-finder-animals-response-model';
 import { PAGINATION_SETTINGS } from '../constants/settings/pagination.settings';
 import { PetFinderOrganizationResponseModel, PetFinderOrganizationModel } from '../interfaces/pet-finder-organization-response-model';
 import { map } from 'rxjs/operators';
 import { AppLatLong } from '../services/location.service';
+import { PET_FINDER_RESPONSE_MOCK } from '../constants/mocks/pet-finder-response.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class PetFinderService {
   constructor(private http: HttpClient) { }
 
   public getPetsByCoordinates(coordinates: AppLatLong): Observable<PetFinderAnimalsResponseModel> {
+    return of(PET_FINDER_RESPONSE_MOCK);
     const url = `${this.BASE_URL}/${this.apiVersion}/animals`;
     const httpOptions = {
       params: new HttpParams()
