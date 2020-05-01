@@ -1,10 +1,13 @@
+$card-padding: 32px;
+
 .card-details {
   height: 100%;
-  padding: 8px 16px;
+  padding: 8px $card-padding $card-padding;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  color: #263238;
 
   .ion-page {
     border-radius: 24px;
@@ -21,12 +24,25 @@
     height: 100%;
 
     &__section {
-      margin-bottom: 8px;
+      margin-bottom: 32px;
 
-      &:not(:first-of-type) {
-        margin-top: 8px;
+      &__title {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 16px;
       }
     }
+  }
+
+  &__main-image {
+    position: relative;
+    min-height: 120px;
+    min-width: 120px;
+    margin: 16px auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 2;
   }
 
   &__spacer {
@@ -42,11 +58,95 @@
   &__title {
     display: flex;
     align-items: center;
-    font-size: 24px;
+    font-size: 32px;
+    line-height: 38px;
   }
 
-  &__subtitle {
-    opacity: 0.66;
+  &__subheading {
+    display: flex;
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: 16px;
+
+    &__item {
+      width: 50%;
+
+      &:first-of-type {
+        border-right: 1px solid #eceff1;
+        padding-right: 8px;
+      }
+
+      &:last-of-type {
+        padding-left: 16px;
+      }
+    }
+
+    &__label {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    &__value {
+      font-size: 12px;
+      opacity: 0.54;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 20px;
+    opacity: 0.54;
+  }
+
+  &__available-since {
+    font-size: 14px;
+    line-height: 14px;
+
+    &__label {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    &__value {
+      font-size: 12px;
+      opacity: 0.54;
+    }
+  }
+
+  &__photos {
+    &__heading {
+      font-size: 24px;
+      line-height: 28px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__table {
+    border-radius: 8px;
+
+    &__row {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      padding: 16px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-bottom: none;
+
+      &--first {
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+      }
+
+      &--last {
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-bottom: 1px solid rgba(0, 0, 0, .08);
+      }
+
+      .mat-icon {
+        margin-right: 8px;
+      }
+    }
   }
 
   &__name {
@@ -62,54 +162,6 @@
     width: 16px;
     font-size: 16px;
     opacity: 0.33;
-  }
-
-  &__breed {
-    font-size: 14px;
-  }
-
-  &__available-since {
-    font-size: 12px;
-  }
-
-  &__description {
-    &__text {
-      margin: 0 !important;
-    }
-  }
-
-  &__attributes {
-    margin-bottom: 8px;
-
-    &__title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    &__item {
-      display: flex;
-    }
-
-    &__icon {
-      margin-right: 8px;
-    }
-  }
-
-  &__org-info {
-    &__title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-    &__item {
-      display: flex;
-      align-items: center;
-      line-height: 24px;
-      margin-bottom: 4px;
-
-      .mat-icon {
-        margin-right: 8px;
-      }
-    }
   }
 
   &__view-adoption {

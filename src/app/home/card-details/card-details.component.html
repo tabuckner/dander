@@ -5,10 +5,11 @@
     </button>
   </div>
   <div class="card-details__content">
+    <div class="card-details__main-image" [ngStyle]="{'background-image': card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'}"></div>
+
     <div class="card-details__content__section card-details__heading">
       <div class="card-details__title">
         <div class="card-details__name">{{ card.name }},</div>
-        <div class="card-details__age">{{ card.age }}</div>
         <div class="card-details__gender" *ngIf="card.gender === 'Male'">
           <svg height="100%" viewBox="0 0 384 384" width="100%" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -22,111 +23,146 @@
           </svg>
         </div>
       </div>
-      <div class="card-details__subtitle">
-        <div class="card-details__breed">{{ card.breed }}</div>
-        <div class="card-details__available-since">Available Since {{ card.published | date:'short' }}</div>
+    </div>
+
+    <div class="card-details__subheading">
+      <div class="card-details__subheading__item">
+        <div class="card-details__subheading__label">
+          Breed
+        </div>
+        <div class="card-details__subheading__value">
+          <div class="card-details__breed">{{ card.breed }}</div>
+        </div>
+      </div>
+      <div class="card-details__subheading__item">
+        <div class="card-details__subheading__label">
+          Age
+        </div>
+        <div class="card-details__subheading__value">
+          <div class="card-details__age">{{ card.age }}</div>
+        </div>
       </div>
     </div>
 
-    <div class="card-details__content__section card__description">
-      <p class="card__description__text" style="margin: 0">
-        {{ card.description || 'We don\'t have a ton of info on this dog. Tap the \'View Adoption\' button to go to the adoption page.' }}
-      </p>
+    <div class="card-details__content__section card-details__description">
+      {{ card.description || 'We don\'t have a ton of info on this dog. Tap the \'View Adoption\' button to go to the adoption page.' }}
+    </div>
+
+    <div class="card-details__available-since">
+      <div class="card-details__available-since__label">
+        Available Since
+      </div>
+      <div class="card-details__available-since__value">
+        {{ card.published | date:'short' }}
+      </div>
+    </div>
+
+    <div class="card-details__content__section card-details__photos">
+      <div class="card-details__photos__heading">Photos</div>
+      <div class="card-details__photos__list">
+
+      </div>
     </div>
 
     <div class="card-details__content__section card-details__attributes">
-      <div class="card-details__attributes__title">
-        At a glance
+      <div class="card-details__content__section__title">
+        Health
       </div>
-      <div class="card-details__attributes__item">
-        <div class="card-details__attributes__icon">
-          <mat-icon>pregnant_woman</mat-icon>
+      <div class="card-details__table card-details__attributes__table mat-elevation-z3">
+        <div class="card-details__table__row card-details__table__row--first">
+          <div class="card-details__attributes__icon">
+            <mat-icon>pregnant_woman</mat-icon>
+          </div>
+          {{ card.attributes.spayed_neutered ? 'Is Fixed' : 'Not Fixed' }}
         </div>
-        {{ card.attributes.spayed_neutered ? 'Is Fixed' : 'Not Fixed' }}
-      </div>
-      <div class="card-details__attributes__item">
-        <div class="card-details__attributes__icon">
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M9,22H17V19.5C19.41,17.87 21,15.12 21,12V4A2,2 0 0,0 19,2H15C13.89,2 13,2.9 13,4V12H3C3,15.09 5,18 9,19.5V22M5.29,14H18.71C18.14,15.91 16.77,17.5 15,18.33V20H11V18.33C9,18 5.86,15.91 5.29,14M15,4H19V12H15V4M16,5V8H18V5H16Z" />
-          </svg>
+        <div class="card-details__table__row card-details__attributes__item">
+          <div class="card-details__attributes__icon">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M9,22H17V19.5C19.41,17.87 21,15.12 21,12V4A2,2 0 0,0 19,2H15C13.89,2 13,2.9 13,4V12H3C3,15.09 5,18 9,19.5V22M5.29,14H18.71C18.14,15.91 16.77,17.5 15,18.33V20H11V18.33C9,18 5.86,15.91 5.29,14M15,4H19V12H15V4M16,5V8H18V5H16Z" />
+            </svg>
+          </div>
+          {{ card.attributes.house_trained ? 'Is House Trained' : 'Not House Trained' }}
         </div>
-        {{ card.attributes.house_trained ? 'Is House Trained' : 'Not House Trained' }}
-      </div>
-      <div class="card-details__attributes__item">
-        <div class="card-details__attributes__icon">
-          <mat-icon>accessible</mat-icon>
+        <div class="card-details__table__row card-details__attributes__item">
+          <div class="card-details__attributes__icon">
+            <mat-icon>accessible</mat-icon>
+          </div>
+          {{ card.attributes.special_needs ? 'Has Special Needs' : 'No Special Needs' }}
         </div>
-        {{ card.attributes.special_needs ? 'Has Special Needs' : 'No Special Needs' }}
-      </div>
-      <div class="card-details__attributes__item">
-        <div class="card-details__attributes__icon">
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M11.15,15.18L9.73,13.77L11.15,12.35L12.56,13.77L13.97,12.35L12.56,10.94L13.97,9.53L15.39,10.94L16.8,9.53L13.97,6.7L6.9,13.77L9.73,16.6L11.15,15.18M3.08,19L6.2,15.89L4.08,13.77L13.97,3.87L16.1,6L17.5,4.58L16.1,3.16L17.5,1.75L21.75,6L20.34,7.4L18.92,6L17.5,7.4L19.63,9.53L9.73,19.42L7.61,17.3L3.08,21.84V19Z" />
-          </svg>
+        <div class="card-details__table__row card-details__table__row--last card-details__attributes__item card-details__attributes__item--last">
+          <div class="card-details__attributes__icon">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M11.15,15.18L9.73,13.77L11.15,12.35L12.56,13.77L13.97,12.35L12.56,10.94L13.97,9.53L15.39,10.94L16.8,9.53L13.97,6.7L6.9,13.77L9.73,16.6L11.15,15.18M3.08,19L6.2,15.89L4.08,13.77L13.97,3.87L16.1,6L17.5,4.58L16.1,3.16L17.5,1.75L21.75,6L20.34,7.4L18.92,6L17.5,7.4L19.63,9.53L9.73,19.42L7.61,17.3L3.08,21.84V19Z" />
+            </svg>
+          </div>
+          {{ card.attributes.shots_current ? 'Shots Are Current' : 'Shots Are Not Current'}}
         </div>
-        {{ card.attributes.shots_current ? 'Shots Are Current' : 'Shots Are Not Current'}}
       </div>
     </div>
 
     <div class="card-details__content__section card-details__org-info" *ngIf="orgInfo">
-      <div class="card-details__org-info__title">Submitted by</div>
-      <div class="card-details__org-info__item" *ngIf="orgInfo.name" (click)="onOrganization()">
-        <mat-icon>business</mat-icon>{{ orgInfo.name }}
-      </div>
-      <div class="card-details__org-info__item" *ngIf="orgInfo.email && isMobile" (click)="onEmail()">
-        <mat-icon>email</mat-icon>{{ orgInfo.email }}
-      </div>
-      <div class="card-details__org-info__item" *ngIf="orgInfo.email && !isMobile" (click)="mailTo.click()">
-        <mat-icon>email</mat-icon>{{ orgInfo.email }}
-        <a #mailTo [href]="'mailto:' + orgInfo.email" style="display: hidden"></a>
-      </div>
-      <div class="card-details__org-info__item" *ngIf="orgInfo.phone && isMobile" (click)="onCall()">
-        <mat-icon>call</mat-icon>{{ orgInfo.phone }}
-      </div>
-      <div class="card-details__org-info__item" *ngIf="orgInfo.phone && !isMobile" (click)="tel.click()">
-        <mat-icon>call</mat-icon>{{ orgInfo.phone }}
-        <a #tel [href]="'tel:' + orgInfo.phone" style="display: hidden"></a>
-      </div>
-      <div class="card-details__org-info__item" *ngIf="isMobile && (addressInfo?.street || addressInfo?.cityStateZip)"
-        (click)="onLocation()">
-        <mat-icon>location_on</mat-icon>
-        <span>
-          <div *ngIf="addressInfo.street">{{ addressInfo.street }}</div>
-          <div *ngIf="addressInfo.cityStateZip">{{ addressInfo.cityStateZip }}</div>
-        </span>
-      </div>
-      <div class="card-details__org-info__item" *ngIf="!isMobile && (addressInfo?.street || addressInfo?.cityStateZip)"
-        (click)="mapsLocation.click()">
-        <mat-icon>location_on</mat-icon>
-        <span>
-          <div *ngIf="addressInfo.street">{{ addressInfo.street }}</div>
-          <div *ngIf="addressInfo.cityStateZip">{{ addressInfo.cityStateZip }}</div>
-        </span>
-        <a #mapsLocation [href]="'https://maps.google.com/?q=' + addressSearchQuery" target="_blank"
-          style="display: hidden"></a>
+      <div class="card-details__content__section__title">Contact</div>
+      <div class="card-details__table mat-elevation-z3">
+        <div class="card-details__table__row card-details__table__row--first" *ngIf="orgInfo.name" (click)="onOrganization()">
+          <mat-icon>business</mat-icon>{{ orgInfo.name }}
+        </div>
+        <div class="card-details__table__row" *ngIf="orgInfo.email && isMobile" (click)="onEmail()">
+          <mat-icon>email</mat-icon>{{ orgInfo.email }}
+        </div>
+        <div class="card-details__table__row" *ngIf="orgInfo.email && !isMobile" (click)="mailTo.click()">
+          <mat-icon>email</mat-icon>{{ orgInfo.email }}
+          <a #mailTo [href]="'mailto:' + orgInfo.email" style="display: hidden"></a>
+        </div>
+        <div class="card-details__table__row" *ngIf="orgInfo.phone && isMobile" (click)="onCall()">
+          <mat-icon>call</mat-icon>{{ orgInfo.phone }}
+        </div>
+        <div class="card-details__table__row" *ngIf="orgInfo.phone && !isMobile" (click)="tel.click()">
+          <mat-icon>call</mat-icon>{{ orgInfo.phone }}
+          <a #tel [href]="'tel:' + orgInfo.phone" style="display: hidden"></a>
+        </div>
+        <div class="card-details__table__row card-details__table__row--last" *ngIf="isMobile && (addressInfo?.street || addressInfo?.cityStateZip)"
+          (click)="onLocation()">
+          <mat-icon>location_on</mat-icon>
+          <span>
+            <div *ngIf="addressInfo.street">{{ addressInfo.street }}</div>
+            <div *ngIf="addressInfo.cityStateZip">{{ addressInfo.cityStateZip }}</div>
+          </span>
+        </div>
+        <div class="card-details__table__row card-details__table__row--last" *ngIf="!isMobile && (addressInfo?.street || addressInfo?.cityStateZip)"
+          (click)="mapsLocation.click()">
+          <mat-icon>location_on</mat-icon>
+          <span>
+            <div *ngIf="addressInfo.street">{{ addressInfo.street }}</div>
+            <div *ngIf="addressInfo.cityStateZip">{{ addressInfo.cityStateZip }}</div>
+          </span>
+          <a #mapsLocation [href]="'https://maps.google.com/?q=' + addressSearchQuery" target="_blank"
+            style="display: hidden"></a>
+        </div>
       </div>
     </div>
 
     <div class="card-details__content__section card-details__org-info card-details__org-info--skeleton"
       *ngIf="!orgInfo">
-      <div class="card-details__org-info__title">Submitted by</div>
-      <div class="card-details__org-info__item" style="display: flex">
-        <mat-icon>business</mat-icon>
-        <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
-      </div>
-      <div class="card-details__org-info__item" style="display: flex">
-        <mat-icon>email</mat-icon>
-        <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
-      </div>
-      <div class="card-details__org-info__item" style="display: flex">
-        <mat-icon>call</mat-icon>
-        <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
-      </div>
-      <div class="card-details__org-info__item" style="display: flex">
-        <mat-icon>location_on</mat-icon>
-        <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+      <div class="card-details__content__section__title">Contact</div>
+      <div class="card-details__table mat-elevation-z3">
+        <div class="card-details__table__row card-details__table__row--first" style="display: flex">
+          <mat-icon>business</mat-icon>
+          <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+        </div>
+        <div class="card-details__table__row" style="display: flex">
+          <mat-icon>email</mat-icon>
+          <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+        </div>
+        <div class="card-details__table__row" style="display: flex">
+          <mat-icon>call</mat-icon>
+          <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+        </div>
+        <div class="card-details__table__row card-details__table__row--last" style="display: flex">
+          <mat-icon>location_on</mat-icon>
+          <ion-skeleton-text animated style="margin-left: 8px; width: 50%"></ion-skeleton-text>
+        </div>
       </div>
     </div>
 
