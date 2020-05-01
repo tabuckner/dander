@@ -2,8 +2,14 @@
   [ngClass]="{'card--moving': isMoving}">
 
   <ion-card-content>
-    <div class="card__image" [ngStyle]="{'background-image': card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'}">
+    <div class="card__top">
+      <div class="card__top__inset"></div>
+      <div 
+        class="card__image"
+        [ngStyle]="{'background-image': card.imageUrl ? 'url(' + card.imageUrl + ')' : 'none'}">
+      </div>
     </div>
+    
     <div class="card__top">
       <div class="card__heading">
         <div class="card__title">
