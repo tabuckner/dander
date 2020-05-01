@@ -61,7 +61,7 @@ $card-padding: 32px;
       top: 0;
       left: 0;
       width: calc(100% + #{2 * $card-padding});
-      height: calc(50% + 16px);
+      height: calc(50% + 24px);
       background: #ECEFF1; // NOTE: Wont work for dark mode.
       z-index: 0;
       margin: -#{$card-padding};
